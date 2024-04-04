@@ -47,7 +47,7 @@ class GreedyPlayer:
 
     def _greedy_action(self):
         best_actions = []
-        highest_value = 0
+        highest_value = -float("inf")
 
         for i in range(len(self.action_values)):
             if (self.action_values[i] > highest_value):
@@ -69,8 +69,6 @@ class GreedyPlayer:
         else:
             return self._greedy_action()
 
-    def __str__(self):
-        print("n", self.n, "\n")
-        print("eps", self.eps, "\n")
-        print("action values", self.action_values, "\n")
-        print("eval count", self.eval_count, "\n")
+    # def __str__(self):
+        # print("action values", self.action_values)
+        # print("eval count", self.eval_count)

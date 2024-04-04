@@ -1,5 +1,6 @@
 from classes import Bandit, GreedyPlayer, BanDix
 import matplotlib.pyplot as plt
+from tqdm import tqdm
 
 # bandit1, bandit2, bandit3 = Bandit(), Bandit(), Bandit()
 # points1, points2, points3 = [], [], []
@@ -54,14 +55,14 @@ for i in range(2000):
     tableBan10.append(BanDix())
     tableGreedyP.append(GreedyPlayer(0.1))
 
-for i in range(1000):
+for i in tqdm(range(1000)):
     for j in range(2000):
         action = tableGreedyP[j].get_action()
         reward = tableBan10[j].play(action)
         points.append(reward)
         tableGreedyP[j].reward(action, reward)
-        tableBan10[j].__str__()
-        tableGreedyP[j].__str__()
+        # tableBan10[j].__str__()
+        # tableGreedyP[j].__str__()
 
 '''
 # Créer 1 sous-graphique
