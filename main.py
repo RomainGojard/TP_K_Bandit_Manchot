@@ -1,18 +1,44 @@
 from classes import Bandit
 import matplotlib.pyplot as plt
 
-bandit = Bandit()
-avg_points = []  # Liste pour stocker les points avg
+bandit1, bandit2, bandit3 = Bandit(), Bandit(), Bandit()
+points1, points2, points3 = [], [], []
 
 for i in range(1000):
-    bandit.je_veux_une_methode_car_je_suis_relou(bandit.play())
-    avg_points.append(bandit.avg)  # Ajouter avg à la liste
-    print(bandit.avg)
+    value1, value2, value3 = bandit1.play(), bandit2.play(), bandit3.play()
+    points1.append(value1)
+    points2.append(value2)
+    points3.append(value3)
+    print(value1, value2, value3)
 
-# Tracer le graphique
-plt.plot(range(1, 1001), avg_points, label='Avg Points')
-plt.xlabel('i')
-plt.ylabel('Avg Points')
-plt.title('Avg Points vs. i')
-plt.legend()
+# Créer trois sous-graphiques
+fig, axs = plt.subplots(3, 1, figsize=(8, 12))
+
+# bandit1
+axs[0].plot(range(1, 1001), points1, label='Bandit 1')
+axs[0].set_xlabel('i')
+axs[0].set_ylabel('value')
+axs[0].set_title('Bandit 1 - Value vs. i')
+axs[0].legend()
+
+# bandit2
+axs[1].plot(range(1, 1001), points2, label='Bandit 2')
+axs[1].set_xlabel('i')
+axs[1].set_ylabel('value')
+axs[1].set_title('Bandit 2 - Value vs. i')
+axs[1].legend()
+
+# bandit3
+axs[2].plot(range(1, 1001), points3, label='Bandit 3')
+axs[2].set_xlabel('i')
+axs[2].set_ylabel('value')
+axs[2].set_title('Bandit 3 - Value vs. i')
+axs[2].legend()
+
+# Ajuster l'espacement entre les graphiques
+plt.tight_layout()
+
+# Afficher les graphiques
 plt.show()
+
+
