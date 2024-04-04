@@ -47,10 +47,24 @@ plt.show()
 
 ban10 = BanDix()
 greedy = GreedyPlayer(0.1)
+points = []
 
 for i in range(1000):
     action = greedy.get_action()
     reward = ban10.play(action)
+    points.append(reward)
     greedy.reward(action, reward)
     ban10.__str__()
     greedy.__str__()
+
+# Créer 1 sous-graphique
+fig, axs = plt.subplots(1, 1, figsize=(8, 12))
+
+axs.plot(range(1, 1001), points, label='Rewards')
+axs.set_xlabel('i')
+axs.set_ylabel('value')
+axs.set_title('Rewards')
+axs.legend()
+
+# Afficher les graphiques
+plt.show()
