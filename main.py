@@ -46,24 +46,27 @@ plt.show()
 
 """
 
-
 tabPointsDesGreedy = [0] * 1000
 tableBan10 = []
 tableGreedyP = []
 
-for i in range(2000):
+nbOfGreedy = 2000
+
+for i in range(nbOfGreedy):
     tableBan10.append(BanDix())
     tableGreedyP.append(GreedyPlayer(0.1))
+    print([tableBan10[-1].tab[j].avg for j in range(10)])
 
 for i in tqdm(range(1000)):
-    for j in range(2000):
+    for j in range(nbOfGreedy):
         action = tableGreedyP[j].get_action()
         reward = tableBan10[j].play(action)
-        tabPointsDesGreedy[i] += reward / 2000
+        tabPointsDesGreedy[i] += reward / nbOfGreedy
         tableGreedyP[j].reward(action, reward)
-        #tableBan10[j].__str__()
-        #tableGreedyP[j].__str__()
 
+for j in range(10):
+    tableBan10[j].__str__()
+    tableGreedyP[j].__str__()
 
 # Tracer le graphique avec les trois courbes
 plt.plot(range(1, 1001), tabPointsDesGreedy, label='Moyenne des rewards des bandits')

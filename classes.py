@@ -12,12 +12,12 @@ class Bandit:
 class BanDix:
     def __init__(self):
         self.tab = []
-        maxAvg = 0
+        maxAvg = None
         maxBanditIndex = 0
         for i in range(10):
             newBandit = Bandit()
             self.tab.append(newBandit)
-            if (newBandit.avg > maxAvg):
+            if maxAvg is None or newBandit.avg > maxAvg:
                 maxAvg = newBandit.avg
                 maxBanditIndex = i
 
@@ -26,8 +26,8 @@ class BanDix:
     def play(self, arm_number):
         if arm_number > 9 or arm_number < 0:
             raise ValueError("Valeur impossible, erreur")
-        else:
-            return self.tab[arm_number].play()
+
+        return self.tab[arm_number].play()
 
     def __str__(self):
         print("max avg", self.banditMaxAvg, "\n")
@@ -43,7 +43,7 @@ class GreedyPlayer:
         self.eval_count = [0] * n
 
     def _random_action(self):
-        return random.randint(0, 9)
+        return random.randint(0, self.n - 1)
 
     def _greedy_action(self):
         best_actions = []
@@ -53,14 +53,15 @@ class GreedyPlayer:
             if (self.action_values[i] > highest_value):
                 best_actions = []
                 best_actions.append(i)
+                highest_value = self.action_values[i]
             elif (self.action_values[i] == highest_value):
                 best_actions.append(i)
 
         return random.choice(best_actions)
 
     def reward(self, action, reward):
-        self.action_values[action] += reward
         self.eval_count[action] += 1
+        self.action_values[action] += (reward - self.action_values[action]) / self.eval_count[action]
 
     def get_action(self):
         explore = random.random()
