@@ -15,3 +15,9 @@ class BanDix:
         for i in range(10):
             self.tab.append(Bandit())
 
+    def play(self, arm_number):
+        if arm_number > 9 or arm_number < 0:
+            raise ValueError("Valeur impossible, erreur")
+        else:
+            return self.tab[arm_number].play()
+
