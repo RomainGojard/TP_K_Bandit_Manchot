@@ -45,4 +45,16 @@ class GreedyPlayer:
     def _random_action(self):
         return random.choice(self.action_values)
 
+    def _greedy_action(self):
+        best_actions = []
+        highest_value = 0
+
+        for i in self.action_values:
+            if(self.action_values[i]>highest_value):
+                best_actions = []
+                best_actions.append(i)
+            elif(self.action_values[i]==highest_value):
+                best_actions.append(i)
+                
+        return random.choice(best_actions)
 
