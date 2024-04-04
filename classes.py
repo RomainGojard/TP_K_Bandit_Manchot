@@ -12,8 +12,16 @@ class Bandit:
 class BanDix:
     def __init__(self):
         self.tab = []
+        maxAvg = 0
+        maxBanditIndex = 0
         for i in range(10):
-            self.tab.append(Bandit())
+            newBandit = Bandit()
+            self.tab.append(newBandit)
+            if(newBandit.avg > maxAvg):
+                maxAvg = newBandit.avg
+                maxBanditIndex = i
+                
+        self.banditMaxAvg = maxBanditIndex
 
     def play(self, arm_number):
         if arm_number > 9 or arm_number < 0:
