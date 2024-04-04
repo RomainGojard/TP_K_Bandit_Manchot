@@ -17,7 +17,7 @@ class BanDix:
         for i in range(10):
             newBandit = Bandit()
             self.tab.append(newBandit)
-            if(newBandit.avg > maxAvg):
+            if (newBandit.avg > maxAvg):
                 maxAvg = newBandit.avg
                 maxBanditIndex = i
 
@@ -42,7 +42,7 @@ class GreedyPlayer:
         explore = random.random() < self.eps
         return explore
 
-
-
+    def _random_action(self):
+        return random.choice(self.action_values)
 
 
