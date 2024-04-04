@@ -38,10 +38,6 @@ class GreedyPlayer:
         self.action_values = []
         self.eval_count = []
 
-    def get_action(self):
-        explore = random.random() < self.eps
-        return explore
-
     def _random_action(self):
         return random.choice(self.action_values)
 
@@ -58,3 +54,9 @@ class GreedyPlayer:
                 
         return random.choice(best_actions)
 
+    def get_action(self):
+        explore = random.random()
+        if explore < self.eps:
+            self._random_action() 
+        else:
+            self._greedy_action()
