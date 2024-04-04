@@ -45,18 +45,25 @@ plt.show()
 
 """
 
-ban10 = BanDix()
-greedy = GreedyPlayer(0.1)
+
 points = []
+tableBan10 = []
+tableGreedyP = []
+
+for i in range(2000):
+    tableBan10.append(BanDix())
+    tableGreedyP.append(GreedyPlayer(0.1))
 
 for i in range(1000):
-    action = greedy.get_action()
-    reward = ban10.play(action)
-    points.append(reward)
-    greedy.reward(action, reward)
-    ban10.__str__()
-    greedy.__str__()
+    for j in range(2000):
+        action = tableGreedyP[j].get_action()
+        reward = tableBan10[j].play(action)
+        points.append(reward)
+        tableGreedyP[j].reward(action, reward)
+        tableBan10[j].__str__()
+        tableGreedyP[j].__str__()
 
+'''
 # Créer 1 sous-graphique
 fig, axs = plt.subplots(1, 1, figsize=(8, 12))
 
@@ -68,3 +75,4 @@ axs.legend()
 
 # Afficher les graphiques
 plt.show()
+'''
