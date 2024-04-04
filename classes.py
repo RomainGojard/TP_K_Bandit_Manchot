@@ -57,6 +57,6 @@ class GreedyPlayer:
     def get_action(self):
         explore = random.random()
         if explore < self.eps:
-            self._random_action() 
+            return self._random_action() 
         else:
-            self._greedy_action()
+            return self._greedy_action()
