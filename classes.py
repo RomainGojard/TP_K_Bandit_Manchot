@@ -20,7 +20,7 @@ class BanDix:
             if(newBandit.avg > maxAvg):
                 maxAvg = newBandit.avg
                 maxBanditIndex = i
-                
+
         self.banditMaxAvg = maxBanditIndex
 
     def play(self, arm_number):
@@ -35,3 +35,5 @@ class GreedyPlayer:
     def __init__(self, n, eps):
         self.n = n
         self.eps = eps
+        self.action_values = []
+        self.eval_count = []
