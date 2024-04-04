@@ -61,8 +61,8 @@ for i in tqdm(range(1000)):
         reward = tableBan10[j].play(action)
         points.append(reward)
         tableGreedyP[j].reward(action, reward)
-        # tableBan10[j].__str__()
-        # tableGreedyP[j].__str__()
+        #tableBan10[j].__str__()
+        #tableGreedyP[j].__str__()
 
 '''
 # Créer 1 sous-graphique

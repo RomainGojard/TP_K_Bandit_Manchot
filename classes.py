@@ -69,6 +69,6 @@ class GreedyPlayer:
         else:
             return self._greedy_action()
 
-    # def __str__(self):
-        # print("action values", self.action_values)
-        # print("eval count", self.eval_count)
+    def __str__(self):
+        print("action values", self.action_values)
+        print("eval count", self.eval_count)
