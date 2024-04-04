@@ -46,7 +46,7 @@ plt.show()
 """
 
 ban10 = BanDix()
-greedy = GreedyPlayer(0.5)
+greedy = GreedyPlayer(0.1)
 
 for i in range(1000):
     action = greedy.get_action()
