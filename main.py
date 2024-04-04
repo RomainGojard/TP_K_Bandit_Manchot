@@ -47,7 +47,7 @@ plt.show()
 """
 
 
-points = []
+tabPointsDesGreedy = [0] * 1000
 tableBan10 = []
 tableGreedyP = []
 
@@ -59,10 +59,19 @@ for i in tqdm(range(1000)):
     for j in range(2000):
         action = tableGreedyP[j].get_action()
         reward = tableBan10[j].play(action)
-        points.append(reward)
+        tabPointsDesGreedy[i] += reward / 2000
         tableGreedyP[j].reward(action, reward)
         #tableBan10[j].__str__()
         #tableGreedyP[j].__str__()
+
+
+# Tracer le graphique avec les trois courbes
+plt.plot(range(1, 1001), tabPointsDesGreedy, label='Moyenne des rewards des bandits')
+plt.xlabel('i')
+plt.ylabel('moy reward')
+plt.title('moy reward vs. i')
+plt.legend()
+plt.show()
 
 '''
 # Créer 1 sous-graphique
