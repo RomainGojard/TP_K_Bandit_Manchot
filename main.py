@@ -24,7 +24,7 @@ for i in tqdm(range(1000)):
         reward = tableBan10[j].play(action)
         tabPointsDesGreedy[i] += reward / nbOfGreedy
         tableGreedyP[j].reward(action, reward)
-        if action == tableGreedyP[j]._greedy_action():
+        if action == tableBan10[j].maxBanditIndex:
             tabPourcentageGreedy[i] += 1 / 20
 
 # Tracer les deux graphiques
