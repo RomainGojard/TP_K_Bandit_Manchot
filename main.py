@@ -1,9 +1,11 @@
-from classes import Bandit
+from classes import Bandit, GreedyPlayer, BanDix
 import matplotlib.pyplot as plt
 
-bandit1, bandit2, bandit3 = Bandit(), Bandit(), Bandit()
-points1, points2, points3 = [], [], []
+# bandit1, bandit2, bandit3 = Bandit(), Bandit(), Bandit()
+# points1, points2, points3 = [], [], []
 
+
+"""
 for i in range(1000):
     value1, value2, value3 = bandit1.play(), bandit2.play(), bandit3.play()
     points1.append(value1)
@@ -41,4 +43,14 @@ plt.tight_layout()
 # Afficher les graphiques
 plt.show()
 
+"""
 
+ban10 = BanDix()
+greedy = GreedyPlayer(0.5)
+
+for i in range(1000):
+    action = greedy.get_action()
+    reward = ban10.play(action)
+    greedy.reward(action, reward)
+    ban10.__str__()
+    greedy.__str__()
