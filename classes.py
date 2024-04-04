@@ -29,3 +29,9 @@ class BanDix:
         else:
             return self.tab[arm_number].play()
 
+
+class GreedyPlayer:
+
+    def __init__(self, n, eps):
+        self.n = n
+        self.eps = eps
