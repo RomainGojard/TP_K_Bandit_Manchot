@@ -37,3 +37,12 @@ class GreedyPlayer:
         self.eps = eps
         self.action_values = []
         self.eval_count = []
+
+    def get_action(self):
+        explore = random.random() < self.eps
+        return explore
+
+
+
+
+
