@@ -15,7 +15,7 @@ tabPourcentageGreedy = [0] * 1000
 
 for i in range(nbOfGreedy):
     tableBan10.append(BanDix())
-    tableGreedyP.append(GreedyPlayer(0.1))
+    tableGreedyP.append(GreedyPlayer(0.0))
     print([tableBan10[-1].tab[j].avg for j in range(10)])
 
 for i in tqdm(range(1000)):
@@ -38,10 +38,10 @@ axs[0].set_title('Moyenne des rewards des bandits vs. i')
 axs[0].legend()
 
 # Deuxième graphique pour le pourcentage greedy
-axs[1].plot(range(1, 1001), tabPourcentageGreedy, label='Pourcentage Greedy')
+axs[1].plot(range(1, 1001), tabPourcentageGreedy, label='Pourcentage coups optimaux')
 axs[1].set_xlabel('i')
 axs[1].set_ylabel('Pourcentage')
-axs[1].set_title('Pourcentage Greedy vs. i')
+axs[1].set_title('Pourcentage optimaux vs. i')
 axs[1].legend()
 
 # Ajuster l'espacement entre les graphiques
