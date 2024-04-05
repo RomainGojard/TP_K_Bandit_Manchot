@@ -37,7 +37,7 @@ axs[0].set_ylabel('moy reward')
 axs[0].set_title('Moyenne des rewards des bandits vs. i')
 axs[0].legend()
 
-# Deuxième graphique pour le pourcentage greedy
+# Deuxième graphique pour le pourcentage
 axs[1].plot(range(1, 1001), tabPourcentageGreedy, label='Pourcentage coups optimaux')
 axs[1].set_xlabel('i')
 axs[1].set_ylabel('Pourcentage')
